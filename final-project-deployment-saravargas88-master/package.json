@@ -1,0 +1,42 @@
+{
+  "name": "final-project-deployment-saravargas88",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Spotify Loveletter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.25.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "globals": "^16.0.0",
+    "hbs": "^4.2.0",
+    "mongo-sanitize": "^1.1.0",
+    "mongoose": "^8.14.0",
+    "mongoose-slug-plugin": "^2.1.0",
+    "path": "^0.12.7",
+    "tailwindcss": "^4.1.4",
+    "url": "^0.11.4"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/vite": "^4.1.4",
+    "autoprefixer": "^10.4.21",
+    "google-auth-library": "^9.15.1",
+    "googleapis": "^148.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.10.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "postcss": "^8.5.3",
+    "slugify": "^1.6.6"
+  }
+}

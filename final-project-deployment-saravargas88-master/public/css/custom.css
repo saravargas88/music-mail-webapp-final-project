@@ -1,0 +1,170 @@
+body {
+    font-family: Garamond, sans-serif;
+    font-size: 1.25em;
+    background-color: #f9e1f2; 
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; 
+}
+.letter-card {
+    background-color: #fff;
+    border: 1px solid #d4006f;
+    border-radius: 10px;
+    padding: 1.5em;
+    margin: 1.5em auto;
+    box-shadow: 0 4px 8px rgba(212, 0, 111, 0.1);
+    max-width: 600px;
+    width: 90%; 
+    text-align: left;
+  }
+  .letter-card h3 {
+    color: #d4006f;
+    margin-top: 0;
+  }
+  .letter-card p {
+    color: #333;
+  }
+  
+
+.login-status {
+    position: absolute;
+    top: 0.25em;
+    right: 0.75em;
+}
+
+header {
+    background-color: #f7a8d1;
+    padding: 0.5em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  
+  .home-link,
+  .login-status {
+    position: static; 
+    margin: 0;
+  }
+  
+  nav > a, nav > a:visited {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+
+h1, h2 {
+    text-align: center;
+    color: #d4006f; 
+}
+
+
+#outer {
+    max-width: 500px;
+    background-color: #fff;
+    margin: 2em auto;
+    text-align: left;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(212, 0, 111, 0.1);
+}
+
+div.content {
+    padding: 0em 1em 1em 1em;
+}
+
+.note {
+    color: #888; 
+    padding-top: 1em;
+}
+
+.error {
+    background-color: #ffcccb; 
+    padding: 0.25em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.success {
+    background-color: #e0f7fa; 
+    padding: 0.25em;
+}
+
+form div {
+    padding-bottom: 0.5em;
+}
+
+textarea {
+    width: 25em;
+    height: 12em;
+    border: 1px solid #d4006f;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+form textarea, form input {
+    display: block;
+}
+
+.badge-pink {
+    background-color: #dcf5cf; 
+    color:  #d4006f;
+    padding: 0.4em 0.75em;
+    border-radius: 0.5em;
+    font-size: 0.9em;
+  }
+  
+input {
+    border: 1px solid #d4006f;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 0.5em;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+button {
+    background-color: #d4006f;     
+    color: white;
+    border: 1px solid #b30059;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    font-weight: bold;
+}
+
+.add-letter-btn {
+    display: inline-block;
+    margin-bottom: 1.5em;
+  }
+
+button:hover {
+    background-color: #b30059;
+}
+
+
+.btn-love {
+    background-color: #d4006f;    
+    color: white;
+    border: 1px solid #b30059;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    font-weight: bold;
+  }
+  
+  .btn-love:hover {
+    background-color: #b30059;
+    border-color: #99004d;
+    color: #fff;
+  }
+  
+  button:hover{
+    background-color: #a00055;
+    border-color: #800040;
+    box-shadow: 0 0 0 0.2rem rgba(212, 0, 111, 0.25);
+    outline: none;
+  }
+  

@@ -1,0 +1,99 @@
+<head>
+  <link rel="stylesheet" href="/css/custom.css">
+  
+
+  <title>Your Writing Desk</title>
+</head>
+
+<body>
+
+{{#if user}}
+
+<div class="text-center mb-4">
+  <form action="/letter/add" method="GET">
+    <button class="btn btn-love btn-lg">💌 Add a Love Letter</button>
+  </form>
+</div>
+
+
+<section class="pending_section mb-5">
+  
+<h2 class="section-heading">
+  Pending Letters
+  <span class="badge badge-pink">{{pendingCount}}</span>
+</h2>
+
+
+<div class="row justify-content-center">
+  {{#each pendingLetters}}
+    <div class="col-12 col-md-8 mx-auto">
+        <div class="letter-card">
+          <h3><a href="/letter/view/{{slug}}">{{title}}</a></h3>
+      <form action="/letter/send/{{slug}}" method="GET" style="display:inline;">
+       
+        <button type="submit" class="btn btn-love btn-sm">Send</button>
+      </form>
+      <form action="/letter/edit/{{slug}}" method="GET" style="display:inline;">
+        <button type="submit" class="btn btn-love btn-sm">Edit</button>
+      </form>
+      <form action="/letter/delete/{{slug}}" method="POST" style="display:inline;">
+        <button type="submit" class="btn btn-love btn-sm" >Delete</button>
+      </form>
+    </div>
+  {{else}}
+    <p>No pending letters.</p>
+  {{/each}}
+
+  </div>
+
+</section>
+
+
+  <section class="sent_section"> 
+  <h2 class="section-heading">
+  Sent Letters <span class="badge badge-pink">{{sentCount}}</span>
+  </h2>
+
+<div class="row justify-content-center">
+
+  {{#each sentLetters}}
+   <div class="col-md-12 col-lg-6">
+    <div class="letter-card">
+      <h3>
+        <a href="/letter/view/{{slug}}">{{title}}</a> – sent to {{recipient_username}}
+      </h3>
+      <p>{{description}}</p>
+    </div>
+  {{else}}
+    <p>No sent letters yet.</p>
+    </div>
+  {{/each}}
+  </div>
+
+</section>
+
+
+<section class="received_section"> 
+  <h2>Received Letters<span class="badge badge-pink">{{receivedCount}}</span></h2>
+
+  <div class="row justify-content-center">
+  {{#each received}}
+  <div class="col-md-12 col-lg-6">
+    <div class="letter-card">
+      <h3>
+        <a href="/letter/view/{{slug}}">{{title}}</a> – from {{sender_username}}
+      </h3>
+      <p>{{description}}</p>
+    </div>
+  {{else}}
+    <p>No received letters yet.</p>
+    </div>
+  {{/each}}
+  </div>
+
+</section>
+
+{{/if}}
+
+
+</body>

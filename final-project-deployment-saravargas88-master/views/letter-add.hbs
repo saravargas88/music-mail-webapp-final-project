@@ -1,0 +1,117 @@
+<head>
+  <meta charset="utf-8">
+  <title>Create New Letter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/startbootstrap-clean-blog@6.0.5/dist/css/clean-blog.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+
+<body>
+<div class="container my-5">
+  <div class="card shadow mx-auto p-4" style="max-width: 700px;">
+    <h2 class="text-center mb-4">💌 Create New Letter</h2>
+
+    <div id="error-message" class="alert alert-danger" style="display: none;">
+      <strong>Error:</strong> The recipient username doesn't exist!
+    </div>
+
+    <form action="/letter/add" method="POST" id="letterform">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" required placeholder="Enter the title of your letter" />
+      </div>
+
+      <div class="mb-3">
+        <label for="recipient_username" class="form-label">Recipient Username</label>
+        <input type="text" name="recipient_username" class="form-control" required placeholder="Enter the recipient's username" />
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea name="message" class="form-control" rows="5" required placeholder="Enter your message"></textarea>
+      </div>
+
+      <button type="button" id="translateShakespeare" class="btn btn-outline-primary mb-3">
+        ✨ Translate to Shakespearean
+      </button>
+
+      <div id="shakespearePreview" class="text-muted mb-3"></div>
+
+      <h4 class="mt-4">🎶 Attach a Song</h4>
+      <div class="input-group mb-3">
+        <input type="text" id="songSearch" class="form-control" placeholder="Search for a song" />
+        <button type="button" id="searchButton" class="btn btn-outline-secondary">Search</button>
+      </div>
+      <ul id="resultsList" class="list-unstyled"></ul>
+
+      <input type="hidden" name="songTitle" id="songTitle" />
+      <input type="hidden" name="songArtist" id="songArtist" />
+      <input type="hidden" name="songPreviewUrl" id="songPreviewUrl" />
+      <input type="hidden" name="songArtUrl" id="songArtUrl" />
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-love btn-lg">💾 Save Letter</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+
+  document.getElementById('translateShakespeare').addEventListener('click', async () => {
+    const message = document.querySelector('textarea[name="message"]').value;
+    const url = `https://api.funtranslations.com/translate/shakespeare.json?text=${encodeURIComponent(message)}`;
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data.contents?.translated) {
+        document.querySelector('textarea[name="message"]').value = data.contents.translated;
+      } else {
+        alert('Translation failed or rate limit reached.');
+      }
+    } catch (error) {
+      console.error('API error:', error);
+      alert('An error occurred while translating.');
+    }
+  });
+
+  
+  document.getElementById('searchButton').addEventListener('click', async () => {
+    const term = document.getElementById('songSearch').value;
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&limit=5`);
+    const data = await res.json();
+
+    const list = document.getElementById('resultsList');
+    list.innerHTML = '';
+    data.results.forEach(song => {
+      const li = document.createElement('li');
+      li.classList.add('mb-3');
+      li.innerHTML = `
+        <strong>${song.trackName}</strong> by ${song.artistName}<br>
+        <img src="${song.artworkUrl100}" class="img-thumbnail my-2" /><br>
+        <audio controls src="${song.previewUrl}"></audio><br>
+        <button type="button" class="btn btn-sm btn-outline-primary mt-1"
+          onclick="selectSong('${song.trackName}', '${song.artistName}', '${song.previewUrl}', '${song.artworkUrl100}')">
+          Attach this Song
+        </button>
+      `;
+      list.appendChild(li);
+    });
+  });
+
+  function selectSong(title, artist, previewUrl, artworkUrl) {
+    document.getElementById('songTitle').value = title;
+    document.getElementById('songArtist').value = artist;
+    document.getElementById('songPreviewUrl').value = previewUrl;
+    document.getElementById('songArtUrl').value = artworkUrl;
+    alert(`🎵 Attached: ${title} by ${artist}`);
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('error') === 'recipient') {
+    document.getElementById('error-message').style.display = 'block';
+  }
+</script>
+</body>
