@@ -47,27 +47,6 @@ An Example LoveLetter Document
 
 ## [Link to Commented First Draft Schema](db.mjs) 
 
-## Wireframes
-
-/Welcome
-![Welcome](documentation/welcome.png)
-/Login 
-![Login](documentation/login.png)
-/Register 
-![Register](documentation/register.png)
-
-/create a love letter
-![create love letter](documentation/create.png)
-
-/LetterList: showing the list of letters made
-![list of letters](documentation/homepage.png)
-
-/LetterList/slug : showing each 
-![Viewing a letter](documentation/loveletter.png)
-
-## Site map
-/Site Map of the application!
-![Site Map](documentation/webmap.png)
 
 ## User Stories or Use Cases
 1. As a non-registered user, I can sign up using Spotify authentication so that I can access the app.
