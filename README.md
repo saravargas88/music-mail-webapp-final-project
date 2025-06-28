@@ -58,8 +58,6 @@ An Example LoveLetter Document
 
 ## Research Topics
 
-(__TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed)
-
 Research Topics
 
 (5 points) Integrate Spotify Authentication
